@@ -16,6 +16,11 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        builder.WebHost.ConfigureKestrel(serverOptions =>
+        {
+            serverOptions.ListenAnyIP(80);
+        });
+
         var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
@@ -30,7 +35,7 @@ internal class Program
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Title = "Fiap Cloud Games (FCG)",
-                Description = "Plataforma de venda de jogos digitais e gestão de servidores para partidas online. Grupo Tech Challenge 8NETT.",
+                Description = "Plataforma de venda de jogos digitais e gestÃ£o de servidores para partidas online. Grupo Tech Challenge 8NETT.",
                 Contact = new OpenApiContact()
                 {
                     Name = "Grupo 149, RMs: 364460, 364901, 362661, 363924, 363080",
@@ -128,13 +133,20 @@ internal class Program
 
         var app = builder.Build();
 
-        if (app.Environment.IsDevelopment())
+        //if (app.Environment.IsDevelopment())
+        //{
+        //app.UseSwagger();
+        //app.UseSwaggerUI();
+        //}
+        
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fiap Cloud Games (FCG) v1");
+            c.RoutePrefix = "swagger";  // garante que o Swagger fique em /swagger
+        });
 
-        app.UseHttpsRedirection();
+        // app.UseHttpsRedirection();
 
         app.UseAuthentication();
         app.UseAuthorization();
