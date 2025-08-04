@@ -1,5 +1,5 @@
 # Tech Challenge - Fase 2 - FIAP Cloud Games (FCG)
----
+
 # API
 > Utilizamos na fase 2 a mesma API apresentada na Fase 1. 
 
@@ -7,7 +7,7 @@ A imagem Docker foi armazenada no repositório Dockerhub rodando em Linux na dis
 
 Para monitoramento integrado, utilizamos o New Relic.
 
----
+
 # PipeLines
 ## CI
 ```
@@ -145,7 +145,7 @@ steps:
     echo O deploy em produção foi executado com sucesso!
   displayName: 'Deploy em produção'
 ```
----
+
 # Dockerfile
 ## Estrutura de estágios (Multi-stage Build)
 O Dockerfile utiliza uma abordagem de build em múltiplos estágios. O primeiro estágio, chamado build, é responsável por compilar e publicar a aplicação. O segundo estágio, chamado final, é usado para rodar a aplicação em ambiente de produção com apenas os arquivos essenciais.
@@ -215,7 +215,7 @@ EXPOSE 80
 # Executa a aplicação
 ENTRYPOINT ["dotnet", "FCG.dll"]
 ```
----
+
 # Docker Compose
 
 O arquivo docker-compose.yml define dois serviços: fcg-api, uma aplicação ASP.NET Core, e sqlserver, um banco SQL Server 2022.
