@@ -5,9 +5,6 @@
 
 A imagem Docker foi armazenada no repositório Dockerhub rodando em Linux na distribuição Ubuntu e banco de dados SQL 2022 e monitoramento integrado com New Relic.
 
-Para monitoramento integrado, utilizamos o New Relic.
-
-
 # PipeLines
 ## CI
 ```
