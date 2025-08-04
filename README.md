@@ -6,6 +6,8 @@
 A imagem Docker foi armazenada no repositório Dockerhub rodando em Linux na distribuição Ubuntu e banco de dados SQL 2022 e monitoramento integrado com New Relic.
 
 # PipeLines
+A aplicação será atualiza pela Azure Cloud.
+
 ## CI
 ```
 pr:
