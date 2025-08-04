@@ -1,5 +1,8 @@
 # Tech Challenge - Fase 2 - FIAP Cloud Games (FCG)
 
+# Vídeo de apresentação
+[Google Drive]([https://pages.github.com](https://drive.google.com/file/d/1obK1rZlVQMg1Ae3IBzCLjT1LOipDIqRj/view?usp=sharing)/)
+
 # API
 > Utilizamos na fase 2 a mesma API apresentada na Fase 1. 
 
