@@ -1,6 +1,6 @@
 # Tech Challenge - Fase 2 - FIAP Cloud Games (FCG)
 ---
-#API
+# API
 Utilizamos na fase 2 a mesma API apresentada na Fase 1. 
 
 A imagem Docker foi armazenada no repositório Dockerhub rodando em Linux na distribuição Ubuntu e banco de dados SQL 2022 e monitoramento integrado com New Relic.
@@ -71,7 +71,7 @@ steps:
   artifact: drop
 ```
 
-##CD
+## CD
 ```
 trigger:
   - main
@@ -146,32 +146,32 @@ steps:
   displayName: 'Deploy em produção'
 ```
 ---
-#Dockerfile
-##Estrutura de estágios (Multi-stage Build)
+# Dockerfile
+## Estrutura de estágios (Multi-stage Build)
 O Dockerfile utiliza uma abordagem de build em múltiplos estágios. O primeiro estágio, chamado build, é responsável por compilar e publicar a aplicação. O segundo estágio, chamado final, é usado para rodar a aplicação em ambiente de produção com apenas os arquivos essenciais.
 
-##Imagem base do build
+## Imagem base do build
 No estágio build, é utilizada a imagem mcr.microsoft.com/dotnet/sdk:8.0, que contém o SDK do .NET 8. Essa imagem oferece todas as ferramentas necessárias para compilar e publicar a aplicação.
 
-##Restauração e publicação da aplicação
+## Restauração e publicação da aplicação
 Primeiramente, o arquivo .csproj é copiado e as dependências são restauradas automaticamente. Em seguida, todo o código-fonte é copiado e a aplicação é publicada no modo Release, com os artefatos finais sendo salvos em /app/publish.
 
-##Imagem base de runtime
+## Imagem base de runtime
 O estágio final utiliza a imagem mcr.microsoft.com/dotnet/aspnet:8.0, que contém apenas os componentes necessários para executar aplicações ASP.NET em produção, sem o SDK completo.
 
-##Instalação do New Relic Agent
+## Instalação do New Relic Agent
 Durante o estágio final, o Dockerfile instala o agente do New Relic para monitoramento da aplicação. Isso envolve a adição do repositório da New Relic, a instalação do agente via apt, e a configuração das variáveis.
 
-##Configuração de ambiente para o New Relic
+## Configuração de ambiente para o New Relic
 São definidas diversas variáveis de ambiente que ativam o profiler do .NET, apontam para a biblioteca do New Relic, e fornecem a chave de licença e o nome da aplicação para o monitoramento.
 
-##Transferência dos artefatos compilados
+## Transferência dos artefatos compilados
 Os arquivos publicados no estágio de build são copiados para o diretório de trabalho /app no contêiner final, permitindo que a aplicação possa ser executada sem as ferramentas de desenvolvimento.
 
-##Exposição na porta 80
+## Exposição na porta 80
 A aplicação expõe a porta 80, que é a padrão para aplicações web, permitindo que o tráfego HTTP externo seja direcionado ao contêiner.
 
-##Definição do ponto de entrada
+## Definição do ponto de entrada
 A instrução ENTRYPOINT define que, ao iniciar o contêiner, será executado o comando dotnet FCG.dll, iniciando assim a aplicação .NET.
 ```
 # Build
@@ -216,7 +216,7 @@ EXPOSE 80
 ENTRYPOINT ["dotnet", "FCG.dll"]
 ```
 ---
-#Docker Compose
+# Docker Compose
 
 O arquivo docker-compose.yml define dois serviços: fcg-api, uma aplicação ASP.NET Core, e sqlserver, um banco SQL Server 2022.
 
