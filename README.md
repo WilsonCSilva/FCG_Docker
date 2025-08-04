@@ -8,8 +8,8 @@ A imagem Docker foi armazenada no repositório Dockerhub rodando em Linux na dis
 Para monitoramento integrado, utilizamos o New Relic.
 
 ---
-#PipeLines
-##CI
+# PipeLines
+## CI
 ```
 pr:
   branches:
