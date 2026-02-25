@@ -1,7 +1,7 @@
 # HACKATON - Fase 5 - AgroSolutions
 
 # Vídeo de apresentação
-Link [Google Drive](https://drive.google.com/file/d/1obK1rZlVQMg1Ae3IBzCLjT1LOipDIqRj/view?usp=sharing).
+Link [Vídeo Google Drive](https://drive.google.com/file/d/1obK1rZlVQMg1Ae3IBzCLjT1LOipDIqRj/view?usp=sharing)
 
 # Diagrama da arquitetura da solução
 Link [Miro](https://miro.com/app/board/uXjVG85GX0s=/?share_link_id=873000372835)
@@ -15,36 +15,29 @@ Link [Miro](https://miro.com/app/board/uXjVG85GX0s=/?share_link_id=873000372835)
 
 
 # PipeLines
-A aplicação será atualiza pela Azure Cloud.
+2. Arquitetura da Solução
+A aplicação foi desenvolvida em .NET e orquestrada via Kubernetes (K8s). A estrutura divide-se em quatro pilares fundamentais:
 
-## CI
-```
-pr:
-  branches:
-    include:
-      - '*'
-```
-pool:
-  vmImage: "windows-latest"
- 
- Dockerfile
-## Estrutura de estágios (Multi-stage Build)
-O Dockerfile utiliza uma abordagem de build em múltiplos estágios. O primeiro estágio, chamado build, é responsável por compilar e publicar a aplicação. O segundo estágio, chamado final, é usado para rodar a aplicação em ambiente de produção com apenas os arquivos essenciais.
+Persistência Poliglota (Polyglot Persistence): * Utilizamos SQL Server para os serviços de Auth e Propriedade, garantindo transações ACID para dados relacionais.
 
-## Imagem base do build
-No estágio build, é utilizada a imagem mcr.microsoft.com/dotnet/sdk:8.0, que contém o SDK do .NET 8. Essa imagem oferece todas as ferramentas necessárias para compilar e publicar a aplicação.
+Implementamos MongoDB no SensorService para suportar a alta vazão e a natureza semiestruturada (JSON) dos dados de sensores.
 
-## Restauração e publicação da aplicação
-Primeiramente, o arquivo .csproj é copiado e as dependências são restauradas automaticamente. Em seguida, todo o código-fonte é copiado e a aplicação é publicada no modo Release, com os artefatos finais sendo salvos em /app/publish.
+Comunicação Assíncrona e Desacoplamento:
 
+O RabbitMQ atua como Message Broker, permitindo que o AlertaService consuma eventos de forma reativa. Isso evita o acoplamento temporal entre a recepção do dado e o disparo de notificações.
 
-```
-# Build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+Estratégia de Ingestão: * O SensorService funciona como um API Gateway especializado, realizando o parsing e a validação dos dados antes da persistência e publicação na fila.
+
+3. Infraestrutura e Observabilidade (Stack de Operação)
+Um diferencial crítico deste projeto é a mentalidade DevOps aplicada desde a concepção:
+
+Monitoramento: Implementação de um pipeline de métricas com Prometheus, realizando o scraping automático de endpoints do Kubernetes.
+
+Visualização: Dashboards em Grafana para análise de throughput, latência e saúde dos pods.
+
+Deployment: Esteira automatizada via GitHub Actions, garantindo a integridade do código através de pipelines de CI/CD.
+
+4. Conclusão e Resultados Esperados
+A arquitetura proposta demonstra maturidade ao separar preocupações de negócio de preocupações de infraestrutura. O uso de Namespaces no Kubernetes e NodePorts específicos garante uma organização lógica e acesso controlado aos serviços, resultando em um sistema resiliente, fácil de monitorar e pronto para o crescimento sob demanda.
 
 
-
-volumes:
-  sqlvolume:
-```
