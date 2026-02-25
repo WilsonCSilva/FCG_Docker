@@ -37,14 +37,16 @@ Deployment: Esteira automatizada via GitHub Actions, garantindo a integridade do
 
 # 5. Microserviços da Solução
 Cadastro e autenticação do Usuário (Produtor Rural): AuthService
-
 Cadastro de Propriedade e Talhões: PropriedadeServices
-
 Ingestão de dados dos sensores: SersorService
-
 Gravação dos dados históricos recebidos do serviço SensorService: AlertaService
 
-´´´
+# 6. Requisitos técnicos do projeto
+Arquitetura baseada em Microsserviços;
+Orquestração com Kubernetes;
+Observabilidade utilizando Prometheus/Grafana;
+Mensageria com RabbitMQ;
+Pipeline de CI/CD automatizado utilizando GitHub Actions.
 
 # 7. Conclusão e Resultados Esperados
 A arquitetura proposta demonstra maturidade ao separar preocupações de negócio de preocupações de infraestrutura. O uso de Namespaces no Kubernetes e NodePorts específicos garante uma organização lógica e acesso controlado aos serviços, resultando em um sistema resiliente, fácil de monitorar e pronto para o crescimento sob demanda.
