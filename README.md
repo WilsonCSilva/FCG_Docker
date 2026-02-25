@@ -14,23 +14,20 @@ Link [Miro](https://miro.com/app/board/uXjVG85GX0s=/?share_link_id=873000372835)
 > Com a visão de implementar a agricultura 4.0, a AgroSolutions decidiu construir uma plataforma de IoT (Internet of Things) e análise de dados para oferecer aos seus cooperados um serviço de agricultura de precisão.
 
 # 2. Arquitetura da Solução
-
 > A aplicação foi desenvolvida em .NET e orquestrada via Kubernetes (K8s). 
 
 A estrutura divide-se em quatro pilares fundamentais:
 
-Persistência Poliglota (Polyglot Persistence): * Utilizamos SQL Server para os serviços de Auth e Propriedade, garantindo transações ACID para dados relacionais.
+Persistência Poliglota (Polyglot Persistence): Utilizamos SQL Server para os serviços de Auth, Propriedade e Alerta, garantindo transações ACID para dados relacionais.
 
 Implementamos MongoDB no SensorService para suportar a alta vazão e a natureza semiestruturada (JSON) dos dados de sensores.
 
-Comunicação Assíncrona e Desacoplamento:
+Comunicação Assíncrona e Desacoplamento: O RabbitMQ atua como Message Broker, permitindo que o AlertaService consuma eventos de forma reativa. Isso evita o acoplamento temporal entre a recepção do dado e o disparo de notificações.
 
-O RabbitMQ atua como Message Broker, permitindo que o AlertaService consuma eventos de forma reativa. Isso evita o acoplamento temporal entre a recepção do dado e o disparo de notificações.
+Ingestão: O SensorService funciona como um API Gateway especializado, realizando o parsing e a validação dos dados antes da persistência e publicação na fila.
 
-Estratégia de Ingestão: * O SensorService funciona como um API Gateway especializado, realizando o parsing e a validação dos dados antes da persistência e publicação na fila.
-
-3. Infraestrutura e Observabilidade (Stack de Operação)
-Um diferencial crítico deste projeto é a mentalidade DevOps aplicada desde a concepção:
+# 4. Infraestrutura e Observabilidade (Stack de Operação)
+> Um diferencial crítico deste projeto é a mentalidade DevOps aplicada desde a concepção:
 
 Monitoramento: Implementação de um pipeline de métricas com Prometheus, realizando o scraping automático de endpoints do Kubernetes.
 
@@ -38,7 +35,16 @@ Visualização: Dashboards em Grafana para análise de throughput, latência e s
 
 Deployment: Esteira automatizada via GitHub Actions, garantindo a integridade do código através de pipelines de CI/CD.
 
-4. Conclusão e Resultados Esperados
+# 5. Microserviços da Solução
+Cadastro e autenticação do Usuário (Produtor Rural): AuthService
+
+Cadastro de Propriedade e Talhões: PropriedadeServices
+
+Ingestão de dados dos sensores: SersorService
+
+Gravação dos dados históricos recebidos do serviço SensorService: AlertaService
+
+# 5. Conclusão e Resultados Esperados
 A arquitetura proposta demonstra maturidade ao separar preocupações de negócio de preocupações de infraestrutura. O uso de Namespaces no Kubernetes e NodePorts específicos garante uma organização lógica e acesso controlado aos serviços, resultando em um sistema resiliente, fácil de monitorar e pronto para o crescimento sob demanda.
 
 
