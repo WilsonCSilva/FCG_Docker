@@ -7,9 +7,12 @@ Link [Google Drive](https://drive.google.com/file/d/1obK1rZlVQMg1Ae3IBzCLjT1LOip
 Link [Miro](https://miro.com/app/board/uXjVG85GX0s=/?share_link_id=873000372835)
 
 # Estudo de caso
-> A AgroSolutions é uma cooperativa agrícola tradicional que busca se modernizar para enfrentar os desafios do século XXI: otimização de recursos hídricos, aumento da produtividade e sustentabilidade. Atualmente, a tomada de decisão no campo é baseada majoritariamente na experiência dos agricultores, sem um forte apoio de dados em tempo real, o que leva a desperdícios e a uma produtividade abaixo do potencial.
+> A AgroSolutions é uma cooperativa agrícola tradicional que busca se modernizar para enfrentar os desafios do século XXI: otimização de recursos hídricos, aumento da produtividade e sustentabilidade.
+>
+> Atualmente, a tomada de decisão no campo é baseada majoritariamente na experiência dos agricultores, sem um forte apoio de dados em tempo real, o que leva a desperdícios e a uma produtividade abaixo do potencial.
+>
 > Com a visão de implementar a agricultura 4.0, a AgroSolutions decidiu construir uma plataforma de IoT (Internet of Things) e análise de dados para oferecer aos seus cooperados um serviço de agricultura de precisão.
-> Para isso, ela contratou os alunos e alunas do curso de 8NETT para realizar a análise do projeto, a arquitetura do software e o desenvolvimento do MVP desta plataforma inovadora.
+
 
 # PipeLines
 A aplicação será atualiza pela Azure Cloud.
