@@ -1,22 +1,23 @@
 # HACKATON - Fase 5 - AgroSolutions
 
-# Vídeo de apresentação
-Link [Vídeo Google Drive](https://drive.google.com/file/d/1obK1rZlVQMg1Ae3IBzCLjT1LOipDIqRj/view?usp=sharing)
+# 1 - Vídeo de apresentação
+Link [Google Drive](https://drive.google.com/file/d/1obK1rZlVQMg1Ae3IBzCLjT1LOipDIqRj/view?usp=sharing)
 
-# Diagrama da arquitetura da solução
+# 2 - Diagrama da arquitetura da solução
 Link [Miro](https://miro.com/app/board/uXjVG85GX0s=/?share_link_id=873000372835)
 
-# Estudo de caso
+# 3 - Estudo de caso
 > A AgroSolutions é uma cooperativa agrícola tradicional que busca se modernizar para enfrentar os desafios do século XXI: otimização de recursos hídricos, aumento da produtividade e sustentabilidade.
 >
 > Atualmente, a tomada de decisão no campo é baseada majoritariamente na experiência dos agricultores, sem um forte apoio de dados em tempo real, o que leva a desperdícios e a uma produtividade abaixo do potencial.
 >
 > Com a visão de implementar a agricultura 4.0, a AgroSolutions decidiu construir uma plataforma de IoT (Internet of Things) e análise de dados para oferecer aos seus cooperados um serviço de agricultura de precisão.
 
+# 2. Arquitetura da Solução
 
-# PipeLines
-2. Arquitetura da Solução
-A aplicação foi desenvolvida em .NET e orquestrada via Kubernetes (K8s). A estrutura divide-se em quatro pilares fundamentais:
+> A aplicação foi desenvolvida em .NET e orquestrada via Kubernetes (K8s). 
+
+A estrutura divide-se em quatro pilares fundamentais:
 
 Persistência Poliglota (Polyglot Persistence): * Utilizamos SQL Server para os serviços de Auth e Propriedade, garantindo transações ACID para dados relacionais.
 
