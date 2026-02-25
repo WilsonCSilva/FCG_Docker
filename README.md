@@ -27,7 +27,7 @@ Comunicação Assíncrona e Desacoplamento: O RabbitMQ atua como Message Broker,
 Ingestão: O SensorService funciona como um API Gateway especializado, realizando o parsing e a validação dos dados antes da persistência e publicação na fila.
 
 # 4. Infraestrutura e Observabilidade (Stack de Operação)
-> Um diferencial crítico deste projeto é a mentalidade DevOps aplicada desde a concepção:
+> Um diferencial crítico deste projeto é a mentalidade DevOps aplicada desde a concepção.
 
 Monitoramento: Implementação de um pipeline de métricas com Prometheus, realizando o scraping automático de endpoints do Kubernetes.
 
@@ -44,7 +44,9 @@ Ingestão de dados dos sensores: SersorService
 
 Gravação dos dados históricos recebidos do serviço SensorService: AlertaService
 
-# 5. Conclusão e Resultados Esperados
+´´´
+
+# 7. Conclusão e Resultados Esperados
 A arquitetura proposta demonstra maturidade ao separar preocupações de negócio de preocupações de infraestrutura. O uso de Namespaces no Kubernetes e NodePorts específicos garante uma organização lógica e acesso controlado aos serviços, resultando em um sistema resiliente, fácil de monitorar e pronto para o crescimento sob demanda.
 
 
